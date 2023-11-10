@@ -1,0 +1,34 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+    id 'maven-publish' // Tambahkan baris ini
+}
+
+// Konfigurasi untuk maven-publish
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            // Ganti dengan informasi library Anda
+            groupId 'com.example'
+            artifactId 'my-library'
+            version '1.0.0'
+
+            // Menggunakan komponen Java
+            from components.kotlin
+        }
+    }
+
+    // Repositori tempat publikasi akan diunggah
+    repositories {
+        maven {
+            // Ganti dengan URL repository tempat Anda ingin mempublikasikan
+            // Misalnya, jika menggunakan JitPack, URL akan seperti di bawah ini:
+            url = uri("https://jitpack.io")
+        }
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
